@@ -23,14 +23,19 @@ body {
         margin: auto;
         display: flex;
         flex-wrap: wrap;
-    
+        flex-direction: row;
+        background-color: red;
+
         .square {
             height: 33.3%;
-            width: 33%;
+            width: 33.3%;
             border: 3px solid @beetroot;
             background-color: lighten(@beetroot,10%);
             text-align: center;
-            cursor: pointer;
+            cursor: pointer;    
+            display: flex;
+            justify-content: center;
+            align-items: center;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -39,4 +44,3 @@ body {
         }
     }
 }
-
