@@ -1,3 +1,8 @@
-# Tick-Tack-Toe
+# How to
+  * Clone repo,
+  * run `npm install` to get dependencies.
+  * run `npm run dev` to start webpack.
+  * run `live-server` or similar to serve up `index.html`.
 
-A tick-tack-toe game made to practise JS React.
+# Objectives
+  * build a simple tic-tac-toe game to practise React JS. The computer will make random goes in-between the  user.
