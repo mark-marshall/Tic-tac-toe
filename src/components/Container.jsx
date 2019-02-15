@@ -4,22 +4,30 @@ class Container extends React.Component {
   constructor() {
     super();
     this.state = {
-      initial: 0
+      SquareOne: '',
+      SquareTwo: '',
+      SquareThree: '',
+      SquareFour: '',
+      SquareFive: '',
+      SquareSix: '',
+      SquareSeven: '',
+      SquareEight: '',
+      SquareNine: '',
     };
   }
 
   render() {
     return (
       <div className="container">
-        <div className="square" data-tab={1}>1</div>
-        <div className="square" data-tab={2}>2</div>
-        <div className="square" data-tab={3}>3</div>
-        <div className="square" data-tab={4}>4</div>
-        <div className="square" data-tab={5}>5</div>
-        <div className="square" data-tab={6}>6</div>
-        <div className="square" data-tab={7}>7</div>
-        <div className="square" data-tab={8}>8</div>
-        <div className="square" data-tab={9}>9</div>
+        <div className="square" data-tab={1}>{this.state.SquareOne}</div>
+        <div className="square" data-tab={2}>{this.state.SquareTwo}</div>
+        <div className="square" data-tab={3}>{this.state.SquareThree}</div>
+        <div className="square" data-tab={4}>{this.state.SquareFour}</div>
+        <div className="square" data-tab={5}>{this.state.SquareFive}</div>
+        <div className="square" data-tab={6}>{this.state.SquareSix}</div>
+        <div className="square" data-tab={7}>{this.state.SquareSeven}</div>
+        <div className="square" data-tab={8}>{this.state.SquareEight}</div>
+        <div className="square" data-tab={9}>{this.state.SquareNine}</div>
       </div>
     );
   }
