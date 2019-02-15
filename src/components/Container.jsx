@@ -20,14 +20,54 @@ class Container extends React.Component {
   }
 
   
-  userFillSquare = (sq) => {
-     console.log(sq)
-    this.computerAssess();
+  userFillSquare = props => {
+     this.setState(prevState => ({
+      squares: prevState.squares.map(square => {
+        if (square.gridPos === props) {
+          square.fill = 'o';
+          return square;
+        } else {
+          return square;
+        }})}))
+        this.computerAssess(props);
+      }
+
+    compFillSquare = props => {
+      console.log(props);
+      this.setState(prevState => ({
+        squares: prevState.squares.map(square => {
+          if (square.gridPos === props) {
+            square.fill = 'x';
+            return square;
+          }
+          else {
+            return square;
+          }
+        })
+      }))
+    }
+
+  computerAssess = props => {
+   const emptySpaces = this.state.squares.filter(square => {
+     if (!square.fill && square.gridPos !== props) {
+       return square
+     }})
+    const numberForSelection = emptySpaces.map(square => square.gridPos);
+    const compSelection = numberForSelection[Math.floor(Math.random() * numberForSelection.length)];
+    this.compFillSquare (compSelection);
   }
+
+
+  /*
+   // console.log(emptyGrids);
+   let numbersAvail = emptyGrids.map(square => square.gridPos);
+   // console.log(numbersAvail);
+   let postionOfCurrent = numbersAvail.indexOf(props);
+   // console.log(postionOfCurrent);
+   numbersAvail.splice(postionOfCurrent, 1)
+   console.log(numbersAvail);
+  */
   
-  computerAssess = () => {
-   console.log('eyyy')
-  }
   
 
   render() {
