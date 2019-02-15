@@ -20,7 +20,7 @@ class Container extends React.Component {
   }
 
   
-  userFillSquare = props => {
+  userSelection = props => {
      this.setState(prevState => ({
       squares: prevState.squares.map(square => {
         if (square.gridPos === props) {
@@ -29,11 +29,10 @@ class Container extends React.Component {
         } else {
           return square;
         }})}))
-        this.computerAssess(props);
+        this.computerSelection(props);
       }
 
     compFillSquare = props => {
-      console.log(props);
       this.setState(prevState => ({
         squares: prevState.squares.map(square => {
           if (square.gridPos === props) {
@@ -47,7 +46,7 @@ class Container extends React.Component {
       }))
     }
 
-  computerAssess = props => {
+  computerSelection = props => {
    const emptySpaces = this.state.squares.filter(square => {
      if (!square.fill && square.gridPos !== props) {
        return square
@@ -58,22 +57,12 @@ class Container extends React.Component {
   }
 
 
-  /*
-   // console.log(emptyGrids);
-   let numbersAvail = emptyGrids.map(square => square.gridPos);
-   // console.log(numbersAvail);
-   let postionOfCurrent = numbersAvail.indexOf(props);
-   // console.log(postionOfCurrent);
-   numbersAvail.splice(postionOfCurrent, 1)
-   console.log(numbersAvail);
-  */
   
-  
-
   render() {
+    //we will check for the winners here and invoke a function to clear the board/send a message 
     return (
       <div className="container">
-       <Squares className="square" squareObj={this.state.squares} fillSquare={this.userFillSquare}/>
+       <Squares className="square" squareObj={this.state.squares} fillSquare={this.userSelection}/>
       </div>
     );
   }
@@ -82,3 +71,16 @@ class Container extends React.Component {
 export default Container;
 
 
+/* 
+
+const winningCombos =[
+[0,1,2],
+[3,4,5],
+[6,7,8],
+[0,4,8],
+[2,4,6],
+[0,3,6],
+[1,4,7],
+[2,5,8]
+]
+*/
