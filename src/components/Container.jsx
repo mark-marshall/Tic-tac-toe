@@ -16,13 +16,11 @@ class Container extends React.Component {
         { gridPos: 8, fill: '' },
         { gridPos: 9, fill: '' }
       ],
-      gameMode: ''
     };
   }
 
   userSelection = props => {
     if (status) {
-      console.log('supp');
       this.setState(prevState => ({
         squares: prevState.squares.map(square => {
           square.fill = '';
@@ -41,6 +39,7 @@ class Container extends React.Component {
           }
         })
       }));
+      console.log(this.checkWinner());
       this.computerSelection(props);
     }
   };
@@ -71,8 +70,7 @@ class Container extends React.Component {
   };
 
   checkWinner = () => {
-    const newArr = this.state.squares.map(square => square.fill);
-
+    const gameArr = this.state.squares.map(square => square.fill);
     const winningCombos = [
       [0, 1, 2],
       [3, 4, 5],
@@ -86,8 +84,8 @@ class Container extends React.Component {
 
     for (let i = 0; i < winningCombos.length; i++) {
       const [a, b, c] = winningCombos[i];
-      if (newArr[a] && newArr[a] === newArr[b] && newArr[b] === newArr[c]) {
-        return newArr[a];
+      if (gameArr[a] && gameArr[a] === gameArr[b] && gameArr[b] === gameArr[c]) {
+        return gameArr[a];
       }
     }
     return null;
@@ -97,9 +95,13 @@ class Container extends React.Component {
     const winner = this.checkWinner();
     if (winner === '☺️') {
       status = 'You carried humanity to victory 🤟';
+    } else {
+    if (winner === '🤖') 
+      {status = 'The robots have won 😱';}
     }
-    if (winner === '🤖') {
-      status = 'The robots have won 😱';
+    const arrCheck = this.state.squares.map(square => square.fill);
+    if (!arrCheck.includes("") && !winner) {
+      status = 'The robots signed a peace treaty ✌️'
     }
 
     return (
