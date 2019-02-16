@@ -24,7 +24,7 @@ class Container extends React.Component {
      this.setState(prevState => ({
       squares: prevState.squares.map(square => {
         if (square.gridPos === props) {
-          square.fill = 'o';
+          square.fill = '☺️';
           return square;
         } else {
           return square;
@@ -36,7 +36,7 @@ class Container extends React.Component {
       this.setState(prevState => ({
         squares: prevState.squares.map(square => {
           if (square.gridPos === props) {
-            square.fill = 'x';
+            square.fill = '🤖';
             return square;
           }
           else {
@@ -56,31 +56,49 @@ class Container extends React.Component {
     this.compFillSquare (compSelection);
   }
 
-
+  checkWinner = () => {
+    const newArr = this.state.squares.map(square => square.fill);
+    console.log(newArr);
+ 
+    const winningCombos =[
+     [0,1,2],
+     [3,4,5],
+     [6,7,8],
+     [0,4,8],
+     [2,4,6],
+     [0,3,6],
+     [1,4,7],
+     [2,5,8]
+     ]
+ 
+    for (let i=0; i<winningCombos.length; i++) {
+     const[a,b,c] = winningCombos[i];
+     if (newArr[a] && newArr[a] === newArr[b] && newArr[b] === newArr[c]) {
+       return newArr[a];
+       }
+    }
+    return null;
+  }
   
   render() {
-    //we will check for the winners here and invoke a function to clear the board/send a message 
+   const winner = this.checkWinner();
+   if (winner === '☺️'){
+     status = 'You carried humanity to victory 🤟';
+   }
+   if (winner === '🤖'){
+     status = 'The robots have won 😱'
+   }
+
+
     return (
+      <div>
       <div className="container">
        <Squares className="square" squareObj={this.state.squares} fillSquare={this.userSelection}/>
+      </div>
+      <h1>{status}</h1>
       </div>
     );
   }
 }
 
 export default Container;
-
-
-/* 
-
-const winningCombos =[
-[0,1,2],
-[3,4,5],
-[6,7,8],
-[0,4,8],
-[2,4,6],
-[0,3,6],
-[1,4,7],
-[2,5,8]
-]
-*/
