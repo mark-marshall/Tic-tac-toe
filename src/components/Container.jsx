@@ -15,11 +15,22 @@ class Container extends React.Component {
         { gridPos: 7, fill: '' },
         { gridPos: 8, fill: '' },
         { gridPos: 9, fill: '' }
-      ]
+      ], gameMode: '',
     };
   }
 
   userSelection = props => {
+    if (status) {
+      console.log('supp');
+      this.setState(prevState => ({
+        squares: prevState.squares.map(square => {
+          square.fill = '';
+          return square;
+        })
+      }))
+      status = '';
+    }
+    else {
     this.setState(prevState => ({
       squares: prevState.squares.map(square => {
         if (square.gridPos === props && !square.fill) {
@@ -31,6 +42,7 @@ class Container extends React.Component {
       })
     }));
     this.computerSelection(props);
+  }
   };
 
   compFillSquare = props => {
@@ -44,7 +56,7 @@ class Container extends React.Component {
         }
       })
     }));
-  };
+  }
 
   computerSelection = props => {
     const emptySpaces = this.state.squares.filter(square => {
