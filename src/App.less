@@ -1,45 +1,64 @@
-// Colors 
-@teal: #5DC8BD;
-@seaweed: #2F6C67;
-@burger-sauce: #F2AF9A;
-@pimiento: #EB4E47;
-@soba: #BDB9BC;
-@beetroot: #CF2C51;
-@pumpkin: #ED8733;
-@aubergine: #3D075E;
+// Colors
+@teal: #5dc8bd;
+@seaweed: #2f6c67;
+@burger-sauce: #f2af9a;
+@pimiento: #eb4e47;
+@soba: #bdb9bc;
+@beetroot: #cf2c51;
+@pumpkin: #ed8733;
+@aubergine: #3d075e;
 @offwhite: #f6f6f6;
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    padding-top: 200px;
-    background-color: @pumpkin;
+  background-color: @pumpkin;
 
-    .container {
-        height: 600px;
-        width: 600px;
-        margin: auto;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
+  h1 {
+    width: 600px;
+    color: @aubergine;
+    font-family: 'Staatliches', cursive;
+    font-weight: bold;
+    font-size: 50px;
+    margin: auto;
+    margin-top: 75px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .container {
+    height: 600px;
+    width: 600px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 
-        .square {
-            height: 33.3%;
-            width: 33.3%;
-            border: 3px solid @beetroot;
-            background-color: lighten(@beetroot,10%);
-            text-align: center;
-            cursor: pointer;    
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 50px;
-            font-weight: bold;
-        }
+    .square {
+      height: 33.3%;
+      width: 33.3%;
+      border: 3px solid @beetroot;
+      background-color: lighten(@beetroot, 10%);
+      text-align: center;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+      font-weight: bold;
     }
+  }
+
+  h2 {
+      text-align: center;
+      margin-top: 45px;
+      font-family: 'Abel', sans-serif;
+      text-transform: lowercase;
+      font-size: 35px;
+
+  }
 }
